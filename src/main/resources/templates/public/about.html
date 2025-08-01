@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head th:replace="~{fragments/head-elements :: headElements}"></head>
+  <title>City eLibrary - About</title>
+
+  <style>
+    div#home-text-sections {
+      display: flex;
+      gap: 1em;
+      margin: 1em 0 1em 0;
+    }
+    div#home-text-sections section {
+      border: 2px solid #ababab;
+      padding: 0.6em;
+    }
+  </style>
+</head>
+<body>
+  <div id="page-content">
+    <header th:replace="~{fragments/header :: header}"></header>
+    <main>
+      <h2>About the Library</h2>
+      <hr>
+      <div>
+          <img src="/images/banner1-about.png" alt="Photo About Us" style="width: 100%;"/><br/><br/>
+          <p>We are a top-flight, fully-digitized library.
+              Browse our <a href='#'>eCatalog</a> and
+              learn how we can serve you with a widest variety of books and lots of other
+              digital content, all for your education as well as your entertainment.
+              You can also <a href='#'>take a virtual tour</a>,
+              of our world-class facilities and be amazed at all what we have in stock
+              for you, your family and friends.</p>
+
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of type
+              and scrambled it to make a type specimen book. It has survived not
+              only five centuries.</p>
+
+          <p>Already have access as a Member, Librarian or System Administrator? Then, simply <a href="#">Sign-In</a>
+              to access the full range of services available to you, based on your User role and access rights.</p>
+      </div>
+      <div id="home-text-sections">
+        <section>
+          <h3>Article 1</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quos expedita esse odio repellendus. Quos reprehenderit velit cum optio ut at odio possimus fuga aliquid libero voluptates</p>
+        </section>
+        <section>
+          <h3>Article 2</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quos expedita esse odio repellendus. Quos reprehenderit velit cum optio ut at odio possimus fuga aliquid libero voluptates</p>
+        </section>
+        <section>
+          <h3>Article 3</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quos expedita esse odio repellendus. Quos reprehenderit velit cum optio ut at odio possimus fuga aliquid libero voluptates</p>
+        </section>
+      </div>
+    </main>
+    <footer th:replace="~{fragments/footer :: footer}"></footer>
+  </div>
+</body>
+</html>

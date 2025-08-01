@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head-elements :: headElements}"></head>
+    <title>eLibrary : : : eCatalog - Books</title>
+    <link rel="stylesheet" th:href="@{/css/books-page-styles.css}">
+</head>
+<body>
+    <div id="page-content">
+        <header th:replace="~{fragments/header :: header}"></header>
+        <main>
+          <div class="container">
+              <div class="info-item">
+                  <span class="label">Librarian Name:</span>
+                  <span th:text="${librarianName}">Default Name</span>
+              </div>
+
+              <div class="info-item">
+                  <span class="label">Library Location:</span>
+                  <span th:text="${libraryLocation}">123 North South Avenue</span>
+              </div>
+
+              <div class="info-item" style="margin-top: 20px;">
+                  <form action="#" method="post" style="display: inline-block; margin-right: 10px;">
+                      <button type="submit" style="padding: 10px 15px; background-color: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                          Add a New Book
+                      </button>
+                  </form>
+              </div>
+          </div>
+
+          <div class="container" style="margin-top: 20px;">
+              <h2>Books in our eCatalog</h2>
+              <table style="width: 100%; border-collapse: collapse;">
+                  <thead>
+                  <tr style="background-color: #3498db; color: white;">
+                      <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">ISBN</th>
+                      <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Title</th>
+                      <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Author</th>
+                      <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Publisher</th>
+                      <th style="padding: 10px; text-align: center; border: 1px solid #ddd;">Price</th>
+                      <th style="padding: 10px; text-align: center; border: 1px solid #ddd;">Date Published</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr th:each="book : ${books}" style="border: 1px solid #ddd;">
+                      <td style="padding: 10px; border: 1px solid #ddd;" th:text="${book.isbn}"></td>
+                      <td style="padding: 10px; border: 1px solid #ddd;" th:text="${book.title}"></td>
+                      <td style="padding: 10px; border: 1px solid #ddd;" th:text="${book.author}"></td>
+                      <td style="padding: 10px; border: 1px solid #ddd;" th:text="${book.publisher}"></td>
+                      <td style="padding: 10px; border: 1px solid #ddd;" th:text="${book.price}"></td>
+                      <td style="padding: 10px; border: 1px solid #ddd;" th:text="${book.datePublished}"></td>
+                  </tr>
+                  <tr th:if="${#lists.isEmpty(books)}">
+                      <td colspan="5" style="padding: 10px; text-align: center; border: 1px solid #ddd;">No books found</td>
+                  </tr>
+                  </tbody>
+              </table>
+          </div>
+        </main>
+        <footer th:replace="~{fragments/footer :: footer}"></footer>
+    </div>
+</body>
+</html>

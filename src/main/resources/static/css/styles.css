@@ -1,0 +1,41 @@
+/* styles.css */
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+div#page-content {
+    /* border: 1em solid lime; */
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+header {
+    min-height: fit-content;
+}
+main {
+    margin: 1em;
+}
+footer {
+    min-height: 8vh;
+    background-color: navy;
+    color: aliceblue;
+    display: flex;
+    align-items: center;
+}
+footer div.left-footer {
+    margin-left: 2em;
+    flex: 1;
+}
+footer div.right-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2em;
+    flex: 1;
+}
+a.sysadmin-card-link {
+    text-decoration: inherit;
+}
+a.std-link:link {
+    text-decoration: none;
+}
