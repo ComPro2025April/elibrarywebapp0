@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elibrary-webapp-deployment
+  labels:
+    app: elibrary-webapp-k8s-mysql
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: elibrary-webapp-k8s-mysql
+  template:
+    metadata:
+      name: elibrary-webapp-deployment
+      labels:
+        app: elibrary-webapp-k8s-mysql
+    spec:
+      containers:
+        - name: elibrary-webapp-k8s-mysql
+          image: undrakhorgil/elibrarywebapp0-elibrary:1.0 #elibrary-webapp-k8s-mysql:1.0.0
+          #          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:   # Setting Environment Variables
+            - name: DB_HOST   # Setting Database host address from configMap
+              valueFrom :
+                configMapKeyRef :
+                  name : db-config
+                  key :  host
+
+            - name: DB_NAME  # Setting Database name from configMap
+              valueFrom :
+                configMapKeyRef :
+                  name : db-config
+                  key :  dbName
+
+            - name: DB_USERNAME  # Setting Database username from Secret
+              valueFrom :
+                secretKeyRef :
+                  name : mysql-secrets
+                  key :  username
+
+            - name: DB_PASSWORD # Setting Database password from Secret
+              valueFrom :
+                secretKeyRef :
+                  name : mysql-secrets
+                  key :  password
+#      restartPolicy: Always
+
+---
+
+apiVersion: v1 # Kubernetes API version
+kind: Service # The Kubernetes resource kind we are creating
+metadata: # Metadata of the resource kind we are creating
+  name: elibrary-webapp-svc
+spec:
+  selector:
+    app: elibrary-webapp-k8s-mysql
+  ports:
+    - protocol: "TCP"
+      port: 8080 # The port that the service is running on in the cluster
+      targetPort: 8080 # The port exposed by the service
+  type: LoadBalancer # NodePort # type of the service.
+      
